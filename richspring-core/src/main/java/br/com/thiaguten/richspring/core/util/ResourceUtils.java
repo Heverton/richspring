@@ -4,21 +4,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.Properties;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public abstract class ResourceUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceUtils.class);
 
-    public static ResourceBundle getResource(String resource) {
+    public static ResourceBundle getResource(String resource, Locale locale) {
         ResourceBundle resourceBundle = null;
         try {
-            resourceBundle = ResourceBundle.getBundle(resource);
+            if (locale == null) {
+                resourceBundle = ResourceBundle.getBundle(resource);
+            } else {
+                resourceBundle = ResourceBundle.getBundle(resource, locale);
+            }
         } catch (Exception e) {
-            LOGGER.error("Erro ao tentar carregar o recurso " + resource + ".properties", e);
+            LOGGER.error("Could not load the resource " + resource + ".properties", e);
         }
         return resourceBundle;
     }
@@ -28,7 +29,7 @@ public abstract class ResourceUtils {
         try {
             propertyResourceBundle = new PropertyResourceBundle(inputStream);
         } catch (Exception e) {
-            LOGGER.error("Erro ao tentar carregar o stream", e);
+            LOGGER.error("Could not load the input stream", e);
         }
         return propertyResourceBundle;
     }
@@ -44,6 +45,18 @@ public abstract class ResourceUtils {
             }
         }
         return properties;
+    }
+
+    public static String getString(ResourceBundle resourceBundle, String key) {
+        String message = null;
+        if (resourceBundle != null && key != null) {
+            try {
+                message = resourceBundle.getString(key);
+            } catch (MissingResourceException e) {
+                LOGGER.error("Key '" + key + "' not found in resource bundle '" + resourceBundle.getBaseBundleName() + "'");
+            }
+        }
+        return message;
     }
 
 }

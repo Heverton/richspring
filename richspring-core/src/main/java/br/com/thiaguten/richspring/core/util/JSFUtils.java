@@ -11,7 +11,6 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import java.util.Iterator;
 import java.util.Locale;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public abstract class JSFUtils {
@@ -56,6 +55,7 @@ public abstract class JSFUtils {
     }
 
     // message bundle
+
     public static void addSaveInfoMessage() {
         addInfoMessage("MSG001");
     }
@@ -110,15 +110,8 @@ public abstract class JSFUtils {
     public static String getMessage(String baseName, String key) {
         if (getViewRootLocale() != null) {
             Locale locale = getViewRootLocale();
-            ResourceBundle resourceBundle = ResourceBundle.getBundle(baseName, locale);
-
-            String message = "???";
-            try {
-                message = resourceBundle.getString(key);
-            } catch (MissingResourceException e) {
-                log.error("Key '" + key + "' not found in resource bundle '" + baseName + "'");
-            }
-            return message;
+            ResourceBundle resourceBundle = ResourceUtils.getResource(baseName, locale);
+            return ResourceUtils.getString(resourceBundle, key);
         }
         return null;
     }
