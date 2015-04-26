@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:rich="http://richfaces.org/rich" template="#{msg['template.page']}">
+
+    <ui:define name="title">
+        <h:outputText value="#{msg['lbl.home.page']}"/>
+    </ui:define>
+
+    <ui:define name="body">
+        <form jsf:id="form" jsf:prependId="false">
+            <rich:panel header="#{msg['lbl.home.page']}">
+                <button jsf:action="#{todoController.pageSearch}">#{msg['lbl.search']}</button>
+            </rich:panel>
+        </form>
+    </ui:define>
+
+</ui:composition>

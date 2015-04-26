@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!--
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${user.home}/.richspring/logs/richspring.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>richspring-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <charset>UTF-8</charset>
+                <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+            </encoder>
+        </appender>
+    -->
+    <logger name="br.com.thiaguten.richspring" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.richfaces" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <logger name="org.h2" level="INFO"/>
+    <logger name="com.zaxxer" level="INFO"/>
+    <logger name="org.junit" level="INFO"/>
+
+    <!-- equivalent to hibernate.show_sql=true
+    <logger name="org.hibernate.SQL" level="DEBUG" />-->
+    <!-- show jdbc parameters 
+    <logger name="org.hibernate.type" level="TRACE" />-->
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <!--         <appender-ref ref="FILE"/> -->
+    </root>
+
+</configuration>

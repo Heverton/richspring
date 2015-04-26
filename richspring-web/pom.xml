@@ -1,0 +1,52 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.com.thiaguten.richspring</groupId>
+        <artifactId>richspring</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>richspring-web</artifactId>
+    <packaging>war</packaging>
+
+    <name>Web API</name>
+    <description>JavaEE 7 WebApp + Spring + Richfaces</description>
+
+    <dependencies>
+        <!-- core -->
+        <dependency>
+            <groupId>br.com.thiaguten.richspring</groupId>
+            <artifactId>richspring-core</artifactId>
+            <version>${richspring-core.version}</version>
+        </dependency>
+
+        <!-- richfaces -->
+        <dependency>
+            <groupId>org.richfaces</groupId>
+            <artifactId>richfaces</artifactId>
+            <version>${richfaces.version}</version>
+        </dependency>
+
+        <!-- javaee -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
+    <properties>
+        <richfaces.version>4.5.4.Final</richfaces.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <javax.el-api.version>2.2.5</javax.el-api.version>
+        <richspring-core.version>0.0.1-SNAPSHOT</richspring-core.version>
+    </properties>
+
+</project>
