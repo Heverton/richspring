@@ -97,7 +97,7 @@
 
             <a:jsFunction name="remove" execute="@this" action="#{todoController.remove()}"
                           oncomplete="#{rich:component('confirmDeletePane')}.hide();"
-                          render="todoDatatable"/>
+                          render="todoDatatable,messagesPanel"/>
 
         </h:form>
     </ui:define>
