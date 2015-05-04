@@ -11,10 +11,8 @@
 
     <rich:popupPanel id="ajaxStatusPanel" resizeable="false" moveable="false" autosized="true" zindex="2005">
         <div>
-            <h:panelGrid columns="2">
-                <h:graphicImage library="img" name="#{msg['template.ajax.status.img']}" height="16" width="16"/>
-                <h:outputText value="#{msg['template.ajax.status.msg']}..."/>
-            </h:panelGrid>
+            <h:graphicImage library="img" name="#{msg['template.ajax.status.img']}" height="16" width="16"/>
+            <h:outputText value=" #{msg['template.ajax.status.msg']} ..."/>
         </div>
     </rich:popupPanel>
 

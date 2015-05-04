@@ -12,9 +12,13 @@ import java.util.List;
 
 @Named
 @ViewScoped
-// O escopo @RequestScoped é ruim para trafegar dados entre as páginas e o @SessionScoped é pesado.
-// O ideal é usar o novo escopo do JSF2 @ViewScoped, ao invés de usar o escopo @RequestScoped junto com a tag <a4j:keepAlive/> que por sinal foi removida no RichFaces 4 em prol do novo escopo @ViewScoped.
-// O Spring 4 não possui escopo equivalente ao @ViewScoped, portanto pode-se criar uma anotação customizada @Scope("view") do Spring para suporte inicial ao escopo @ViewScoped do JSF2.
+/**
+ * The @RequestScoped scope is bad to traffic data between pages and the @SessionScoped is heavy.
+ * Ideally, use the new scope of JSF2 @ViewScoped, instead of using the @RequestScoped scope with the <a4j:keepAlive/>
+ * tag which by the way was removed in RichFaces 4 in favor of the new @ViewScoped scope.
+ * The Spring 4 does not have equivalent scope to @ViewScoped, so you can create a custom annotation @Scope("view") of
+ * Spring for initial support @ViewScoped the JSF2 scope.
+ */
 public class TodoController implements Serializable {
 
     private static final long serialVersionUID = -8729367596577540910L;
