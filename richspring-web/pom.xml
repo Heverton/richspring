@@ -40,13 +40,25 @@
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/richspring-web/</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
-        <richfaces.version>4.5.4.Final</richfaces.version>
+        <richfaces.version>4.5.12.Final</richfaces.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <javax.el-api.version>2.2.5</javax.el-api.version>
         <richspring-core.version>0.0.1-SNAPSHOT</richspring-core.version>
+        <jetty-maven-plugin.version>9.3.6.v20151106</jetty-maven-plugin.version>
     </properties>
 
 </project>

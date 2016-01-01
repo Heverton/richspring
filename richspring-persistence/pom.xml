@@ -47,9 +47,9 @@
     </dependencies>
 
     <properties>
-        <hikaricp.version>2.3.7</hikaricp.version>
-        <hibernate.version>4.3.9.Final</hibernate.version>
-        <h2.version>1.4.187</h2.version>
+        <hikaricp.version>2.3.12</hikaricp.version>
+        <hibernate.version>4.3.11.Final</hibernate.version>
+        <h2.version>1.4.190</h2.version>
     </properties>
 
 </project>

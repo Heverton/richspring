@@ -78,10 +78,10 @@
     </dependencies>
 
     <properties>
-        <javax.faces.version>2.2.10</javax.faces.version>
+        <javax.faces.version>2.2.12</javax.faces.version>
         <javax.inject.version>1</javax.inject.version>
         <javax.cdi-api.version>1.2</javax.cdi-api.version>
-        <springframework.bom.version>4.1.6.RELEASE</springframework.bom.version>
+        <springframework.bom.version>4.2.4.RELEASE</springframework.bom.version>
         <richspring-model.version>0.0.1-SNAPSHOT</richspring-model.version>
     </properties>
 
