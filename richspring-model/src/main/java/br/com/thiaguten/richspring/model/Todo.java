@@ -13,9 +13,9 @@ public class Todo extends BaseEntity<Long> implements Versionable {
 
     private static final long serialVersionUID = -7004205764576627787L;
 
-//    @Transient
-     @Version
-     @Column(name = "VERSION")
+    //    @Transient
+    @Version
+    @Column(name = "VERSION")
     private long version;
 
     @Id

@@ -1,7 +1,6 @@
 package br.com.thiaguten.richspring.core.spring.config;
 
-import br.com.thiaguten.persistence.provider.PersistenceProvider;
-import br.com.thiaguten.persistence.provider.hibernate.HibernateJpaPersistenceProvider;
+import br.com.thiaguten.persistence.provider.hibernate.HibernateCriteriaPersistenceProvider;
 import br.com.thiaguten.richspring.persistence.HibernateJpaPersistenceProviderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.Properties;
 
@@ -38,7 +36,7 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public PersistenceProvider persistenceProvider() {
+    public HibernateCriteriaPersistenceProvider persistenceProvider() {
         return new HibernateJpaPersistenceProviderImpl();
     }
 

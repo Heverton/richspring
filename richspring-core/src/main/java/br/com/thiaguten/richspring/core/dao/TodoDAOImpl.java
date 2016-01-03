@@ -1,8 +1,7 @@
 package br.com.thiaguten.richspring.core.dao;
 
 import br.com.thiaguten.persistence.dao.GenericBaseDAO;
-import br.com.thiaguten.persistence.provider.PersistenceProvider;
-import br.com.thiaguten.persistence.provider.hibernate.HibernatePersistenceProvider;
+import br.com.thiaguten.persistence.provider.hibernate.HibernateCriteriaPersistenceProvider;
 import br.com.thiaguten.richspring.model.Todo;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;
@@ -19,15 +18,11 @@ import java.util.List;
 public class TodoDAOImpl extends GenericBaseDAO<Todo, Long> implements TodoDAO {
 
     @Autowired
-    private PersistenceProvider persistenceProvider;
+    private HibernateCriteriaPersistenceProvider persistenceProvider;
 
     @Override
-    public PersistenceProvider getPersistenceProvider() {
+    public HibernateCriteriaPersistenceProvider getPersistenceProvider() {
         return this.persistenceProvider;
-    }
-
-    public void setPersistenceProvider(PersistenceProvider persistenceProvider) {
-        this.persistenceProvider = persistenceProvider;
     }
 
     @Override
@@ -40,7 +35,7 @@ public class TodoDAOImpl extends GenericBaseDAO<Todo, Long> implements TodoDAO {
             if (StringUtils.hasText(todo.getDescription())) {
                 criterions.add(Restrictions.ilike("description", todo.getDescription(), MatchMode.ANYWHERE));
             }
-            return ((HibernatePersistenceProvider) persistenceProvider).findByCriteria(getEntityClass(), criterions);
+            return persistenceProvider.findByCriteria(getEntityClass(), criterions);
         }
         return Collections.emptyList();
     }
