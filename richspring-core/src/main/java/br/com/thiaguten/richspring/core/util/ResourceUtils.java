@@ -6,9 +6,15 @@ import org.slf4j.LoggerFactory;
 import java.io.InputStream;
 import java.util.*;
 
-public abstract class ResourceUtils {
+public final class ResourceUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ResourceUtils.class);
+
+    private ResourceUtils() {
+        // suppress default constructor
+        // for noninstantiability
+        throw new AssertionError();
+    }
 
     public static ResourceBundle getResource(String resource, Locale locale) {
         ResourceBundle resourceBundle = null;

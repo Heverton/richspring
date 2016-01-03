@@ -10,8 +10,8 @@
 
     <artifactId>richspring-model</artifactId>
 
-    <name>Model API</name>
-    <description>Core Domain Objects</description>
+    <name>Model Module API</name>
+    <description>Core Domain Objects (Entities)</description>
 
     <dependencies>
         <!-- validation jsr-303 -->

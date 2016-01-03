@@ -1,8 +1,5 @@
 package br.com.thiaguten.richspring.core.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.component.EditableValueHolder;
@@ -13,9 +10,13 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public abstract class JSFUtils {
+public final class JSFUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(JSFUtils.class);
+    private JSFUtils() {
+        // suppress default constructor
+        // for noninstantiability
+        throw new AssertionError();
+    }
 
     public static FacesContext getFacesContext() {
         return FacesContext.getCurrentInstance();

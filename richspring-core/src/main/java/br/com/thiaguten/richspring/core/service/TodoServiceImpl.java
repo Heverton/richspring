@@ -55,12 +55,12 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public Todo get(Long id) {
-        return todoDAO.get(id);
+        return todoDAO.findById(id);
     }
 
     @Override
     public List<Todo> list() {
-        return todoDAO.list();
+        return todoDAO.findAll();
     }
 
     @Override

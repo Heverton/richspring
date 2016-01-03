@@ -11,7 +11,7 @@
     <artifactId>richspring-web</artifactId>
     <packaging>war</packaging>
 
-    <name>Web API</name>
+    <name>Web Module API</name>
     <description>JavaEE 7 WebApp + Spring + Richfaces</description>
 
     <dependencies>
@@ -47,7 +47,7 @@
                 <version>${jetty-maven-plugin.version}</version>
                 <configuration>
                     <webApp>
-                        <contextPath>/richspring-web/</contextPath>
+                        <contextPath>/richspring-web</contextPath>
                     </webApp>
                 </configuration>
             </plugin>
