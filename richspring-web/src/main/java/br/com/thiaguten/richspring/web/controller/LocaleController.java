@@ -35,7 +35,7 @@ public class LocaleController implements Serializable {
     @PostConstruct
     public void init() {
         this.locale = JSFUtils.getViewRootLocale();
-        this.country = this.locale.toString();
+        this.country = this.locale != null ? this.locale.toString() : null;
     }
 
     public Collection<SelectItem> getCountries() {

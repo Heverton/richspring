@@ -4,6 +4,6 @@ import br.com.thiaguten.persistence.entity.BaseEntity;
 
 public interface Filter<T extends BaseEntity> {
 
-    public boolean match(T type);
+    boolean match(T type);
 
 }
