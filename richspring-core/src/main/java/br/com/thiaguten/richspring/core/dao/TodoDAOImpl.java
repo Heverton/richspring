@@ -1,7 +1,7 @@
 package br.com.thiaguten.richspring.core.dao;
 
 import br.com.thiaguten.persistence.dao.GenericBaseDAO;
-import br.com.thiaguten.persistence.provider.hibernate.HibernateCriteriaPersistenceProvider;
+import br.com.thiaguten.persistence.spi.provider.hibernate.HibernateCriteriaPersistenceProvider;
 import br.com.thiaguten.richspring.model.Todo;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.MatchMode;

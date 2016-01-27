@@ -1,6 +1,6 @@
 package br.com.thiaguten.richspring.persistence;
 
-import br.com.thiaguten.persistence.provider.hibernate.HibernateJpaPersistenceProvider;
+import br.com.thiaguten.persistence.spi.provider.hibernate.HibernateJpaPersistenceProvider;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

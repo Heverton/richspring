@@ -5,7 +5,7 @@
     <parent>
         <groupId>br.com.thiaguten.richspring</groupId>
         <artifactId>richspring</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>richspring-web</artifactId>
@@ -57,7 +57,7 @@
     <properties>
         <richfaces.version>4.5.12.Final</richfaces.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <richspring-core.version>0.0.1-SNAPSHOT</richspring-core.version>
+        <richspring-core.version>1.0.0-SNAPSHOT</richspring-core.version>
         <jetty-maven-plugin.version>9.3.6.v20151106</jetty-maven-plugin.version>
     </properties>
 

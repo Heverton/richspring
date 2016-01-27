@@ -1,6 +1,6 @@
 package br.com.thiaguten.richspring.core.spring.config;
 
-import br.com.thiaguten.persistence.provider.hibernate.HibernateCriteriaPersistenceProvider;
+import br.com.thiaguten.persistence.spi.provider.hibernate.HibernateCriteriaPersistenceProvider;
 import br.com.thiaguten.richspring.persistence.HibernateJpaPersistenceProviderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
