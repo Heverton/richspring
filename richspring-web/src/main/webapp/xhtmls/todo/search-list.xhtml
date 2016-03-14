@@ -42,52 +42,72 @@
 
             <br/>
 
-            <rich:dataTable id="todoDatatable" value="#{todoController.todos}" var="todo" rows="5" rowClasses="odd-row,even-row">
-                <f:facet name="header">
-                    <h:outputText value="#{msg['lbl.list']}"/>
-                </f:facet>
-
-                <rich:column>
+            <a:outputPanel id="todoDatatablePanel">
+                <rich:dataTable id="todoDatatable" value="#{todoController.todos}" var="todo" rows="5" rowClasses="odd-row,even-row">
                     <f:facet name="header">
-                        <h:outputText value="#{msg['lbl.id']}"/>
-                    </f:facet>
-                    <h:outputText value="#{todo.id}"/>
-                </rich:column>
-                <rich:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg['lbl.todo.resume']}"/>
-                    </f:facet>
-                    <h:outputText value="#{todo.resume}"/>
-                </rich:column>
-                <rich:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg['lbl.todo.description']}"/>
-                    </f:facet>
-                    <h:outputText value="#{todo.description}"/>
-                </rich:column>
-                <rich:column>
-                    <f:facet name="header">
-                        <h:outputText value="#{msg['lbl.action']}"/>
+                        <h:outputText value="#{msg['lbl.list']}"/>
                     </f:facet>
 
-                    <div align="center">
-                        <h:commandLink styleClass="no-decor" action="#{todoController.prepareEdit(todo)}">
-                            <h:graphicImage library="img" name="#{msg['img.edit']}" title="#{msg['lbl.edit']}"/>
-                        </h:commandLink>
-                        <a:commandLink styleClass="no-decor" execute="@this" oncomplete="#{rich:component('confirmDeletePane')}.show();">
-                            <h:graphicImage library="img" name="#{msg['img.delete']}" title="#{msg['lbl.delete']}"/>
-                            <f:setPropertyActionListener value="#{todo}" target="#{todoController.todo}"/>
-                        </a:commandLink>
-                    </div>
-                </rich:column>
+                    <rich:column>
+                        <f:facet name="header">
+                            <h:selectBooleanCheckbox title="#{msg['lbl.selectall']}" value="#{todoController.selectedAll}">
+                                <a:ajax event="click" render="todoDatatablePanel" listener="#{todoController.selectAllTodos}" />
+                            </h:selectBooleanCheckbox>
+                        </f:facet>
+                        <div align="center">
+                            <h:selectBooleanCheckbox title="#{msg['lbl.select']}" value="#{todo.selected}">
+                                <a:ajax event="click" render="todoDatatablePanel" listener="#{todoController.deselectAllTodos}" />
+                            </h:selectBooleanCheckbox>
+                        </div>
+                    </rich:column>
+                    <rich:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{msg['lbl.id']}"/>
+                        </f:facet>
+                        <h:outputText value="#{todo.id}"/>
+                    </rich:column>
+                    <rich:column>
+                        <f:facet name="header">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel for="resumeFilter" value="#{msg['lbl.todo.resume']}" />
+                                <h:inputText id="resumeFilter" value="#{todoFilter.resume}">
+                                    <a:ajax event="blur" render="todoDatatablePanel" listener="#{todoController.filter}" />
+                                </h:inputText>
+                            </h:panelGrid>
+                        </f:facet>
+                        <h:outputText value="#{todo.resume}"/>
+                    </rich:column>
+                    <rich:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{msg['lbl.todo.description']}"/>
+                        </f:facet>
+                        <h:outputText value="#{todo.description}"/>
+                    </rich:column>
+                    <rich:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{msg['lbl.action']}"/>
+                        </f:facet>
+                        <div align="center">
+                            <h:commandLink styleClass="no-decor" action="#{todoController.prepareEdit(todo)}">
+                                <h:graphicImage library="img" name="#{msg['img.edit']}" title="#{msg['lbl.edit']}"/>
+                            </h:commandLink>
+                            <a:commandLink styleClass="no-decor" execute="@this" oncomplete="#{rich:component('confirmDeletePane')}.show();">
+                                <h:graphicImage library="img" name="#{msg['img.delete']}" title="#{msg['lbl.delete']}"/>
+                                <f:setPropertyActionListener value="#{todo}" target="#{todoController.todo}"/>
+                            </a:commandLink>
+                        </div>
+                    </rich:column>
 
-                <f:facet name="noData">
-                    <h:outputText value="#{msg['MSG009']}"/>
-                </f:facet>
-                <f:facet name="footer">
-                    <rich:dataScroller page="#{todoController.page}" fastStep="3"/>
-                </f:facet>
-            </rich:dataTable>
+                    <f:facet name="noData">
+                        <h:outputText value="#{msg['MSG009']}"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <rich:dataScroller page="#{todoController.page}" fastStep="3"/>
+                    </f:facet>
+                </rich:dataTable>
+
+                <h:outputText id="todoDatatableSumary" value="#{msg['lbl.total']} : #{todoController.todos.size()} - #{msg['lbl.select']} : #{todoController.todosSelected.size()}" />
+            </a:outputPanel>
 
             <rich:popupPanel id="confirmDeletePane" moveable="false" autosized="true">
                 <h:outputText value="#{msg['MSG006']}"/>
@@ -97,7 +117,7 @@
 
             <a:jsFunction name="remove" execute="@this" action="#{todoController.remove()}"
                           oncomplete="#{rich:component('confirmDeletePane')}.hide();"
-                          render="todoDatatable,messagesPanel"/>
+                          render="todoDatatablePanel,messagesPanel"/>
 
         </h:form>
     </ui:define>

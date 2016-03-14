@@ -2,12 +2,17 @@ package br.com.thiaguten.richspring.web.controller;
 
 import br.com.thiaguten.richspring.core.service.TodoService;
 import br.com.thiaguten.richspring.model.Todo;
+import br.com.thiaguten.richspring.web.component.filter.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @Named
@@ -26,8 +31,16 @@ public class TodoController implements Serializable {
     private int page;
     private Todo todo;
     private List<Todo> todos;
+    private List<Todo> todosCopy;
+
+    private boolean selectedAll;
+    private List<Todo> todosSelected;
 
     private final TodoService todoService;
+
+    @Autowired
+    @Qualifier("todoFilter")
+    private Filter<Todo> todoFilter;
 
     @Autowired
     public TodoController(TodoService todoService) {
@@ -39,9 +52,13 @@ public class TodoController implements Serializable {
         this.page = 1;
         this.todo = new Todo();
         this.todos = todoService.list();
+        this.todosCopy = Collections.unmodifiableList(new ArrayList<>(todos));
+        this.selectedAll = false;
+        this.todosSelected = new ArrayList<>();
     }
 
     public String pageSearch() {
+        this.todo = new Todo();
         return "/xhtmls/todo/search-list";
     }
 
@@ -83,6 +100,40 @@ public class TodoController implements Serializable {
         init();
     }
 
+    public void filter() {
+        this.todos.clear();
+        this.todos.addAll(this.todosCopy);
+        Iterator<Todo> iterator = this.todos.iterator();
+        while (iterator.hasNext()) {
+            Todo todo = iterator.next();
+            if (!todoFilter.match(todo)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    public List<Todo> getTodosSelected() {
+        this.todosSelected.clear();
+        for (Todo todo : todos) {
+            if (todo.getSelected()) {
+                this.todosSelected.add(todo);
+            }
+        }
+        return todosSelected;
+    }
+
+    public void selectAllTodos() {
+        Iterator<Todo> iterator = todos.iterator();
+        while (iterator.hasNext()) {
+            Todo todo = iterator.next();
+            todo.setSelected(selectedAll);
+        }
+    }
+
+    public void deselectAllTodos() {
+        this.selectedAll = (getTodosSelected().size() == todos.size());
+    }
+
     // getters and setters
 
     public Todo getTodo() {
@@ -107,5 +158,13 @@ public class TodoController implements Serializable {
 
     public void setPage(int page) {
         this.page = page;
+    }
+
+    public boolean isSelectedAll() {
+        return selectedAll;
+    }
+
+    public void setSelectedAll(boolean selectedAll) {
+        this.selectedAll = selectedAll;
     }
 }

@@ -51,7 +51,7 @@
         <hikaricp.version>2.3.12</hikaricp.version>
         <hibernate.version>4.3.11.Final</hibernate.version>
         <h2.version>1.4.190</h2.version>
-        <simple-dao-hibernate.version>1.0.0</simple-dao-hibernate.version>
+        <simple-dao-hibernate.version>1.0.1-SNAPSHOT</simple-dao-hibernate.version>
     </properties>
 
 </project>

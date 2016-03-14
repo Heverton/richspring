@@ -33,6 +33,9 @@ public class Todo extends BaseEntity<Long> implements Versionable {
     @Column(name = "DESCRIPTION", length = 4000, nullable = false)
     private String description;
 
+    @Transient
+    private boolean selected = false;
+
     public Todo() {
         super();
     }
@@ -75,6 +78,14 @@ public class Todo extends BaseEntity<Long> implements Versionable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     @Override
