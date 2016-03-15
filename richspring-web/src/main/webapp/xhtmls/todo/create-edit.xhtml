@@ -22,14 +22,18 @@
                 </f:facet>
                 <h:panelGrid columns="2">
                     <h:outputLabel for="resume" value="#{msg['lbl.todo.resume']}"/>
-                    <h:inputText id="resume" label="#{msg['lbl.todo.resume']}" value="#{todoController.todo.resume}" maxlength="155" required="true" />
+                    <h:inputText id="resume" label="#{msg['lbl.todo.resume']}" value="#{todoController.todo.resume}"
+                                 maxlength="155" required="true"/>
                     <h:outputLabel for="description" value="#{msg['lbl.todo.description']}"/>
-                    <h:inputText id="description" label="#{msg['lbl.todo.description']}" value="#{todoController.todo.description}" maxlength="4000" required="true" />
+                    <h:inputText id="description" label="#{msg['lbl.todo.description']}"
+                                 value="#{todoController.todo.description}" maxlength="4000" required="true"/>
                 </h:panelGrid>
             </rich:panel>
             <div>
-                <h:commandButton action="#{todoController.createOrEdit()}" value="#{msg['lbl.create']}" rendered="#{not todoController.todo.hasID()}"/>
-                <h:commandButton action="#{todoController.createOrEdit()}" value="#{msg['lbl.edit']}" rendered="#{todoController.todo.hasID()}"/>
+                <h:commandButton action="#{todoController.createOrEdit()}" value="#{msg['lbl.create']}"
+                                 rendered="#{not todoController.todo.hasID()}"/>
+                <h:commandButton action="#{todoController.createOrEdit()}" value="#{msg['lbl.edit']}"
+                                 rendered="#{todoController.todo.hasID()}"/>
                 <h:commandButton action="#{todoController.pageSearch()}" value="#{msg['lbl.cancel']}" immediate="true"/>
             </div>
         </h:form>

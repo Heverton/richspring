@@ -19,7 +19,8 @@
             <f:selectItems value="#{skinController.skins}" noSelectionValue="#{skinController.currentSkin}"/>
         </h:selectOneMenu>
         <label for="locale">#{msg['header.locale.lang']}:</label>
-        <h:selectOneMenu id="locale" value="#{localeController.country}" valueChangeListener="#{localeController.localeChangeListener}">
+        <h:selectOneMenu id="locale" value="#{localeController.country}"
+                         valueChangeListener="#{localeController.localeChangeListener}">
             <f:selectItems value="#{localeController.countries}"/>
             <ui:remove>
                 <!--<f:selectItem itemLabel="#{msg['header.locale.lang.pt']}" itemValue="pt_BR" />-->

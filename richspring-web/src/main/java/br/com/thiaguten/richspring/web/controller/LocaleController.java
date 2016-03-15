@@ -10,7 +10,7 @@ import javax.faces.model.SelectItem;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Map.Entry;
 
 @Named
 @Scope("session")
@@ -40,7 +40,11 @@ public class LocaleController implements Serializable {
 
     public Collection<SelectItem> getCountries() {
         Set<SelectItem> itens = new HashSet<>(LocaleController.supportedLocaleMap.size());
-        itens.addAll(LocaleController.supportedLocaleMap.entrySet().stream().map(entry -> new SelectItem(entry.getValue().toString(), entry.getKey())).collect(Collectors.toList()));
+        Set<Entry<String, Locale>> entrySet = LocaleController.supportedLocaleMap.entrySet();
+        for (Map.Entry<String, Locale> entry : entrySet) {
+            itens.add(new SelectItem(entry.getValue().toString(), entry.getKey()));
+        }
+//        itens.addAll(LocaleController.supportedLocaleMap.entrySet().stream().map(entry -> new SelectItem(entry.getValue().toString(), entry.getKey())).collect(Collectors.toList()));
         return itens;
     }
 

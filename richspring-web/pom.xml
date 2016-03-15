@@ -55,10 +55,10 @@
     </build>
 
     <properties>
-        <richfaces.version>4.5.12.Final</richfaces.version>
+        <richfaces.version>4.5.14.Final</richfaces.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <richspring-core.version>1.0.0-SNAPSHOT</richspring-core.version>
-        <jetty-maven-plugin.version>9.3.6.v20151106</jetty-maven-plugin.version>
+        <jetty-maven-plugin.version>9.3.7.v20160115</jetty-maven-plugin.version>
     </properties>
 
 </project>

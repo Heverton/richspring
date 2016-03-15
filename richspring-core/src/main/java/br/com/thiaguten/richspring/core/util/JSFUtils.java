@@ -7,6 +7,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -50,7 +51,11 @@ public final class JSFUtils {
             evh.setLocalValueSet(false);
             evh.setValid(true);
             if (component.getChildCount() > 0) {
-                component.getChildren().forEach(br.com.thiaguten.richspring.core.util.JSFUtils::cleanSubmittedValues);
+//            	component.getChildren().forEach(br.com.thiaguten.richspring.core.util.JSFUtils::cleanSubmittedValues);
+                List<UIComponent> children = component.getChildren();
+                for (UIComponent uiComponent : children) {
+                    JSFUtils.cleanSubmittedValues(uiComponent);
+                }
             }
         }
     }
@@ -67,6 +72,10 @@ public final class JSFUtils {
 
     public static void addDeleteInfoMessage() {
         addInfoMessage("MSG003");
+    }
+
+    public static void addDeleteAllInfoMessage() {
+        addInfoMessage("MSG010");
     }
 
     public static void addInfoMessage(String key) {

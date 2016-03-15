@@ -123,9 +123,7 @@ public class TodoController implements Serializable {
     }
 
     public void selectAllTodos() {
-        Iterator<Todo> iterator = todos.iterator();
-        while (iterator.hasNext()) {
-            Todo todo = iterator.next();
+        for (Todo todo : todos) {
             todo.setSelected(selectedAll);
         }
     }
