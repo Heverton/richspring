@@ -7,8 +7,9 @@ Maven multi-module JavaEE 7 CRUD project of integration between JSF and Spring u
 This sample project contains embedded Jetty container, so to run it execute the below commands at terminal:
 
 1 - `mvn clean package` at root folder (richspring)
+
 2 - `mvn jetty:run` at subfolder (richspring-web)
 
 The deployed URL is: http://localhost:8080/richspring-web
 
-To stop Jetty instance hit ctrl+c at terminal.
+To stop Jetty instance hit `CTRL + C` at Terminal.
