@@ -54,13 +54,13 @@
                             <h:selectBooleanCheckbox title="#{msg['lbl.selectall']}"
                                                      value="#{todoController.selectedAll}"
                                                      disabled="#{empty todoController.todos}">
-                                <a:ajax event="click" render="todoDatatablePanel"
+                                <a:ajax event="click" render="todoDatatablePanel,deleteAllBtnPanel"
                                         listener="#{todoController.selectAllTodos}"/>
                             </h:selectBooleanCheckbox>
                         </f:facet>
                         <div align="center">
                             <h:selectBooleanCheckbox title="#{msg['lbl.select']}" value="#{todo.selected}">
-                                <a:ajax event="click" render="todoDatatablePanel"
+                                <a:ajax event="click" render="todoDatatablePanel,deleteAllBtnPanel"
                                         listener="#{todoController.deselectAllTodos}"/>
                             </h:selectBooleanCheckbox>
                         </div>
@@ -117,6 +117,20 @@
                               value="#{msg['lbl.total']} : #{todoController.todos.size()} - #{msg['lbl.selected']} : #{todoController.todosSelected.size()}"/>
             </a:outputPanel>
 
+            <a:outputPanel id="deleteAllBtnPanel">
+                <div align="right">
+                    <ui:remove>
+                        <!--
+                        <a:commandButton actionListener="#{todoController.removeAll}" value="#{msg['lbl.deleteall']}"
+                            render="todoDatatablePanel,messagesPanel,deleteAllBtnPanel" rendered="#{todoController.todosSelected.size() > 1}" />
+                        -->
+                    </ui:remove>
+                    <a:commandButton execute="@this" oncomplete="#{rich:component('confirmDeleteAllPane')}.show();"
+                                     value="#{msg['lbl.deleteall']}"
+                                     rendered="#{todoController.todosSelected.size() > 1}"/>
+                </div>
+            </a:outputPanel>
+
             <rich:popupPanel id="confirmDeletePane" moveable="false" autosized="true">
                 <h:outputText value="#{msg['MSG006']}"/>
                 <a:commandButton value="#{msg['lbl.cancel']}"
@@ -127,6 +141,17 @@
             <a:jsFunction name="remove" execute="@this" action="#{todoController.remove()}"
                           oncomplete="#{rich:component('confirmDeletePane')}.hide();"
                           render="todoDatatablePanel,messagesPanel"/>
+
+            <rich:popupPanel id="confirmDeleteAllPane" moveable="false" autosized="true">
+                <h:outputText value="#{msg['MSG011']}"/>
+                <a:commandButton value="#{msg['lbl.cancel']}"
+                                 onclick="#{rich:component('confirmDeleteAllPane')}.hide(); return false;"/>
+                <a:commandButton value="#{msg['lbl.deleteall']}" onclick="removeAll(); return false;"/>
+            </rich:popupPanel>
+
+            <a:jsFunction name="removeAll" execute="@this" actionListener="#{todoController.removeAll}"
+                          oncomplete="#{rich:component('confirmDeleteAllPane')}.hide();"
+                          render="todoDatatablePanel,messagesPanel,deleteAllBtnPanel"/>
 
         </h:form>
     </ui:define>

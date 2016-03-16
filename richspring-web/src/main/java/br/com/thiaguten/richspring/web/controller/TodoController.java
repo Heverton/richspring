@@ -96,6 +96,11 @@ public class TodoController implements Serializable {
         return pageSearch();
     }
 
+    public void removeAll() {
+        todoService.deleteAll(getTodosSelected());
+        clear();
+    }
+
     public void clear() {
         init();
     }

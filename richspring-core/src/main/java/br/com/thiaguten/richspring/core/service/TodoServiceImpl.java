@@ -46,6 +46,20 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    public void deleteAll(List<Todo> todos) {
+        for (int i = 0; i < todos.size(); i++) {
+            Todo todo = todos.get(i);
+            if (todo.hasID()) {
+                todoDAO.delete(todo);
+                if (i == (todos.size() - 1)) {
+                    JSFUtils.addDeleteAllInfoMessage();
+                }
+            }
+        }
+    }
+
+    @Override
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     public void deleteById(Long id) {
         if (id != null) {
             todoDAO.deleteById(id);

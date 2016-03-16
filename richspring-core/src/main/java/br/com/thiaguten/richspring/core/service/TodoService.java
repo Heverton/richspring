@@ -10,6 +10,8 @@ public interface TodoService {
 
     void delete(Todo todo);
 
+    void deleteAll(List<Todo> todos);
+
     void deleteById(Long id);
 
     Todo get(Long id);
