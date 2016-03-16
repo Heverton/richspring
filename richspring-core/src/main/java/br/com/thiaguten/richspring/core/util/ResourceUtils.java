@@ -59,7 +59,7 @@ public final class ResourceUtils {
             try {
                 message = resourceBundle.getString(key);
             } catch (MissingResourceException e) {
-                LOGGER.error("Key '" + key + "' not found in resource bundle '" + resourceBundle.getBaseBundleName() + "'");
+                LOGGER.error("Key '" + key + "' not found in resource bundle.");
             }
         }
         return message;
