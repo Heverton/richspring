@@ -22,21 +22,21 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Todo saveOrUpdate(Todo todo) {
         Todo todoReturn;
         if (todo.hasID()) {
             todoReturn = todoDAO.update(todo);
             JSFUtils.addUpdateInfoMessage();
         } else {
-            todoReturn = todoDAO.save(todo);
+            todoReturn = todoDAO.create(todo);
             JSFUtils.addSaveInfoMessage();
         }
         return todoReturn;
     }
 
     @Override
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void delete(Todo todo) {
         if (todo.hasID()) {
             todoDAO.delete(todo);
@@ -45,7 +45,7 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void deleteAll(List<Todo> todos) {
         for (int i = 0; i < todos.size(); i++) {
             Todo todo = todos.get(i);
@@ -59,7 +59,7 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public void deleteById(Long id) {
         if (id != null) {
             todoDAO.deleteById(id);
@@ -69,7 +69,7 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public Todo get(Long id) {
-        return todoDAO.findById(id);
+        return todoDAO.read(id);
     }
 
     @Override

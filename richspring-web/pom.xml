@@ -11,15 +11,26 @@
     <artifactId>richspring-web</artifactId>
     <packaging>war</packaging>
 
-    <name>Web Module API</name>
-    <description>JavaEE 7 WebApp + Spring + Richfaces</description>
+    <name>${project.artifactId}</name>
+    <description>RichSpring Web Project (JavaEE 7 + SpringFramework + Richfaces...)</description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>br.com.thiaguten.richspring</groupId>
+                <artifactId>richspring-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- core -->
         <dependency>
             <groupId>br.com.thiaguten.richspring</groupId>
             <artifactId>richspring-core</artifactId>
-            <version>${richspring-core.version}</version>
         </dependency>
 
         <!-- richfaces -->
@@ -55,10 +66,9 @@
     </build>
 
     <properties>
-        <richfaces.version>4.5.14.Final</richfaces.version>
+        <richfaces.version>4.5.17.Final</richfaces.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <richspring-core.version>1.0.0-SNAPSHOT</richspring-core.version>
-        <jetty-maven-plugin.version>9.3.7.v20160115</jetty-maven-plugin.version>
+        <jetty-maven-plugin.version>9.3.10.v20160621</jetty-maven-plugin.version>
     </properties>
 
 </project>

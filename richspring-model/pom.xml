@@ -10,8 +10,20 @@
 
     <artifactId>richspring-model</artifactId>
 
-    <name>Model Module API</name>
-    <description>Core Domain Objects (Entities)</description>
+    <name>${project.artifactId}</name>
+    <description>RichSpring Model Project (Core Domain Objects [Entities])</description>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>br.com.thiaguten.richspring</groupId>
+                <artifactId>richspring-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- validation jsr-303 -->
@@ -31,14 +43,12 @@
         <dependency>
             <groupId>br.com.thiaguten.richspring</groupId>
             <artifactId>richspring-persistence</artifactId>
-            <version>${richspring-persistence.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <validation-api.version>1.1.0.Final</validation-api.version>
-        <hibernate-validator.version>5.2.3.Final</hibernate-validator.version>
-        <richspring-persistence.version>1.0.0-SNAPSHOT</richspring-persistence.version>
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
     </properties>
 
 </project>

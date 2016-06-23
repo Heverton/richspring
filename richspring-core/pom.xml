@@ -10,8 +10,8 @@
 
     <artifactId>richspring-core</artifactId>
 
-    <name>Core Module API</name>
-    <description>Business and Data Access Objects</description>
+    <name>${project.artifactId}</name>
+    <description>RichSpring Core Project (Business and Data Access Objects)</description>
 
     <dependencyManagement>
         <dependencies>
@@ -22,6 +22,13 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
+            <dependency>
+                <groupId>br.com.thiaguten.richspring</groupId>
+                <artifactId>richspring-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -30,7 +37,6 @@
         <dependency>
             <groupId>br.com.thiaguten.richspring</groupId>
             <artifactId>richspring-model</artifactId>
-            <version>${richspring-model.version}</version>
         </dependency>
 
         <!-- spring framework -->
@@ -77,14 +83,18 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <javax.faces.version>2.2.13</javax.faces.version>
         <javax.inject.version>1</javax.inject.version>
         <javax.cdi-api.version>1.2</javax.cdi-api.version>
-        <springframework.bom.version>4.2.5.RELEASE</springframework.bom.version>
-        <richspring-model.version>1.0.0-SNAPSHOT</richspring-model.version>
+        <springframework.bom.version>4.3.0.RELEASE</springframework.bom.version>
     </properties>
 
 </project>

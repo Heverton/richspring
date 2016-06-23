@@ -1,7 +1,7 @@
 package br.com.thiaguten.richspring.model;
 
-import br.com.thiaguten.persistence.Versionable;
-import br.com.thiaguten.persistence.entity.BaseEntity;
+import br.com.thiaguten.persistence.core.Versionable;
+import br.com.thiaguten.richspring.model.base.BaseModel;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -9,11 +9,11 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TODO")
-public class Todo extends BaseEntity<Long> implements Versionable {
+public class Todo extends BaseModel<Long> implements Versionable {
 
     private static final long serialVersionUID = -7004205764576627787L;
 
-    //    @Transient
+//    @Transient
     @Version
     @Column(name = "VERSION")
     private long version;
