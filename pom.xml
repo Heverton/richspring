@@ -39,24 +39,6 @@
         <url>https://github.com/thiaguten/richspring/issues</url>
     </issueManagement>
 
-    <!-- http://www.slf4j.org/faq.html#excludingJCL
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>commons-logging</groupId>
-                <artifactId>commons-logging</artifactId>
-                <version>99-empty</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>-->
-
-    <!--<dependencies>-->
-        <!--<dependency>-->
-            <!--<groupId>commons-logging</groupId>-->
-            <!--<artifactId>commons-logging</artifactId>-->
-        <!--</dependency>-->
-    <!--</dependencies>-->
-
     <build>
         <pluginManagement>
             <plugins>

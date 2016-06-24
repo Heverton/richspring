@@ -17,6 +17,14 @@
         Bill of materials to make sure a consistent set of versions is used for RichSpring modules.
     </description>
 
+    <repositories>
+        <repository>
+            <id>version99</id>
+            <!-- highly available repository serving empty artifacts -->
+            <url>http://version99.qos.ch/</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <!-- richspring modules -->
@@ -41,6 +49,12 @@
                 <version>${richspring.version}</version>
             </dependency>
             <!-- log -->
+            <!-- http://www.slf4j.org/faq.html#excludingJCL -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -75,6 +89,7 @@
 
     <properties>
         <richspring.version>${project.version}</richspring.version>
+        <commons-logging.version>99-empty</commons-logging.version>
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <junit.version>4.12</junit.version>
