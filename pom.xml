@@ -20,6 +20,14 @@
         <module>richspring-web</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <id>version99</id>
+            <!-- highly available repository serving empty artifacts -->
+            <url>http://version99.qos.ch/</url>
+        </repository>
+    </repositories>
+
     <developers>
         <developer>
             <id>thiaguten</id>
