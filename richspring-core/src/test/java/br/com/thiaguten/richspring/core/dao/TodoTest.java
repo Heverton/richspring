@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -32,6 +33,11 @@ public class TodoTest {
         Todo todoReturn = todoService.get(todoSaved.getId());
         assertEquals(todoReturn, todoSaved);
 
+        // find
+        assertNotNull(todoReturn);
+        List<Todo> todoFind = todoService.find(todoReturn);
+        assertEquals(todoFind.get(0), todoReturn);
+
         // update
         todoReturn.setDescription("description2");
         assertNotNull(todoReturn.getId());
@@ -48,5 +54,11 @@ public class TodoTest {
         todoService.deleteById(todoUpdated.getId());
         Todo todoDeleted = todoService.get(todoUpdated.getId());
         assertNull(todoDeleted);
+
+        // find
+        assertNull(todoDeleted);
+        List<Todo> todoFindNull = todoService.find(todoDeleted);
+        assertEquals(todoFindNull, Collections.emptyList());
     }
+
 }
